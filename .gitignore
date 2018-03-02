@@ -1,16 +1,8 @@
 # UE4 Project directories to ignore
- /Binaries/
- /DerivedDataCache/
- /Intermediate/
- /Saved/
- /Build/
- 
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
- 
-
 Workshop3.code-workspace
+.vscode/*
+Binaries/*
+Intermediate/*
+Saved/*
+Build/*
+DerivedDataCache/*
