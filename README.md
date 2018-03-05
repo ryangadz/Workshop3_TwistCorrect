@@ -12,6 +12,8 @@ There are 2 methods to correct the default twisting, or you can use a combinatio
 - add LOTS of comments 
 - clean things up a bit
 - add VR to the train (I will not be doing this so if anyone does it I'll roll it in)
+- convert to C++
+- convert to plugin
 
 I will be going over this project at our monthly UE4 meetup
 https://www.meetup.com/Seattle-Indie-Game-Dev-Workshop/events/247613617/
