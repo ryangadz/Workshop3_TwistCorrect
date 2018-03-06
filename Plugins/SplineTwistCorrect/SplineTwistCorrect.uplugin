@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SplineTwistCorrect",
+	"Description": "Function library to help correct twisted splines for use with spline mesh. ",
+	"Category": "Other",
+	"CreatedBy": "Ryan Gadz",
+	"CreatedByURL": "https://twitter.com/GadzGamz",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SplineTwistCorrect",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		}
+	]
+}
