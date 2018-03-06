@@ -7,3 +7,6 @@ Saved/*
 Build/*
 DerivedDataCache/*
 Plugins/*
+Plugins/Binaries/*
+Plugins/Intermediate/*
+Content/Beta/
