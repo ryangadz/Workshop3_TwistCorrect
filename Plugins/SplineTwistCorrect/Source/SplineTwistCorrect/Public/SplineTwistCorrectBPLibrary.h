@@ -44,8 +44,12 @@ class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
 	static float SplineTwistCorrectSampleFunction(float Param);
 
 
-	/** Input a spline and ideal subdivision length to get number of subdivisions and calculated length. */
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Find Rail Length", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
-	static void FindRailLength(const class USplineComponent* Spline, int &number, float &length,const float IdealLength=10);
+    /** Input a spline and ideal subdivision length to get number of subdivisions and calculated length. */
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Calculate Rail Length", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+	static void CalcRailLength(const class USplineComponent* Spline, int &number, float &length,const float IdealLength=10);
+
+    /** Input a spline with index and section length to calculate start and end locations and tangents for a spline mesh */
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "Calculate Start End", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+    static void CalcStartEnd(const class USplineComponent* Spline, FVector& LocStart, FVector& TanStart, FVector& LocEnd, FVector& TanEnd, const int Index, const float Length=10);
 	
 };
