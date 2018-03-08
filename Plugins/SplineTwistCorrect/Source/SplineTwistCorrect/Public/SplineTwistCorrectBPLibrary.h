@@ -2,7 +2,10 @@
 
 #pragma once
 #include "Runtime/Engine/Classes/Components/SplineComponent.h"
+#include "Runtime/Engine/Classes/Components/SplineMeshComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/Actor.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "Runtime/Engine/Classes/Kismet/KismetMathLibrary.h"
 #include "SplineTwistCorrectBPLibrary.generated.h"
  
 
@@ -52,4 +55,19 @@ class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
     UFUNCTION(BlueprintPure, meta = (DisplayName = "Calculate Start End", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
     static void CalcStartEnd(const class USplineComponent* Spline, FVector& LocStart, FVector& TanStart, FVector& LocEnd, FVector& TanEnd, const int Index, const float Length=10);
 	
+    /** Input a spline to calculate the rotation of a spline mesh from the current 'Up Vector' to its end location. */
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "Calc Rot from Up Vector", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+    static void CalcRotFromUp(float &Rotation, const class USplineComponent* Spline, const int Index, const float Length=10);
+
+    /** Input a spline and splinemesh to set its start and end along with twisting */
+    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Configure SplineMesh", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+    static void ConfigSplineMesh(
+        const int &Index, 
+        const float &Length, 
+        const class USplineComponent *SplineFinal, 
+        class USplineMeshComponent *SplineMesh, 
+        const class AActor *Actor, 
+        class UStaticMesh *StaticMesh);
+
+
 };
