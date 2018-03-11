@@ -15,16 +15,17 @@ float USplineTwistCorrectBPLibrary::SplineTwistCorrectSampleFunction(float Param
 	return -1;
 }
 
-
 void USplineTwistCorrectBPLibrary::CalcRailLength(
-	const class USplineComponent* Spline, 
-	int &number, 
+	const class USplineComponent *Spline,
+	int &number,
 	float &length,
 	const float IdealLength)
 {
-	//TODO needs to return if no spline input
-	number = (Spline->GetSplineLength()/IdealLength);
-	length = (Spline->GetSplineLength()/number);
+	if (!Spline)
+		return;
+	float clampedLength = FMath::Clamp(IdealLength, 1.0F, 100000.0F);
+	number = (Spline->GetSplineLength() / clampedLength);
+	length = (Spline->GetSplineLength() / number);
 }
 
 void USplineTwistCorrectBPLibrary::CalcStartEnd(
@@ -36,7 +37,8 @@ void USplineTwistCorrectBPLibrary::CalcStartEnd(
 	const int Index, 
 	const float Length)
 {
-	//TODO needs to return if no spline input
+	if (!Spline)
+		return;
     ESplineCoordinateSpace::Type L = ESplineCoordinateSpace::Local;
 
 	LocStart = Spline->GetLocationAtDistanceAlongSpline(Index*Length, L);
@@ -55,7 +57,8 @@ void USplineTwistCorrectBPLibrary::CalcRotFromUp(
 	const int Index,
 	const float Length)
 {
-	//TODO needs to return if no spline input
+	if (!Spline)
+		return;
 	ESplineCoordinateSpace::Type W = ESplineCoordinateSpace::World;
 	FVector Tan = Spline->GetTangentAtDistanceAlongSpline((Index + 1) * Length, W);
 	FVector Crossed1 = FVector::CrossProduct(Tan.GetSafeNormal(), Spline->GetUpVectorAtDistanceAlongSpline(Index * Length, W));
@@ -74,7 +77,8 @@ void USplineTwistCorrectBPLibrary::ConfigSplineMesh(
 	const class AActor *Actor,
 	class UStaticMesh *StaticMesh)
 {
-	//TODO needs to return if no spline input
+	if (!SplineFinal || !SplineMesh || !Actor)
+		return;
 	FVector locStart = FVector(0, 0, 0),
 			locEnd = FVector(100, 0, 0),
 			tanStart = FVector(100, 0, 0),
@@ -101,7 +105,8 @@ void USplineTwistCorrectBPLibrary::OffsetASpline(
 	const float RotFromUp,
 	const float OffsetDist)
 {
-	//TODO needs to return if no spline input
+	if (!SplineUser || !SplineOffset)
+		return;
 	ESplineCoordinateSpace::Type W = ESplineCoordinateSpace::World;
 	SplineOffset->ClearSplinePoints(true);
 	float lastIndex = SplineUser->GetNumberOfSplinePoints() - 1;
@@ -131,7 +136,8 @@ void USplineTwistCorrectBPLibrary::FixTangents(
 	const class USplineComponent *SplineUser,
 	class USplineComponent *SplineOffset)
 {
-	//TODO needs to return if no spline input
+	if (!SplineUser || !SplineOffset)
+		return;
 	ESplineCoordinateSpace::Type W = ESplineCoordinateSpace::World;
 	FVector arriveTan = FVector(10, 0, 0);
 	FVector leaveTan = FVector(10, 0, 0);
@@ -167,4 +173,35 @@ void USplineTwistCorrectBPLibrary::FixTangents(
 		}
 		SplineOffset->UpdateSpline();
 	}
+}
+
+void USplineTwistCorrectBPLibrary::BuildCorrectedSpline(
+	const class USplineComponent *SplineUser,
+	const class USplineComponent *SplineOffset,
+	class USplineComponent *SplineFinal,
+	const float IdealLength)
+{
+	if (!SplineUser || !SplineOffset || !SplineFinal)
+		return;
+	int32 numSections;
+	float length;
+	CalcRailLength(SplineUser, numSections, length, IdealLength); 
+	SplineFinal->ClearSplinePoints(true);
+	float numLoops = numSections+((SplineUser->IsClosedLoop())*-1);
+	FVector position;
+	FVector posOffset;
+	FVector tangent;
+	ESplineCoordinateSpace::Type W = ESplineCoordinateSpace::World;
+	for (int32 i= 0; i<=numLoops; i++)
+	{
+		position = SplineUser->GetLocationAtDistanceAlongSpline(i*length,W);
+		SplineFinal->AddSplinePointAtIndex(position, i, W, false);
+		
+		posOffset = SplineOffset->FindLocationClosestToWorldLocation(position,W);
+		SplineFinal->SetUpVectorAtSplinePoint(i, (posOffset-position).GetSafeNormal(), W, false);
+		
+		tangent = length*((SplineUser->GetTangentAtDistanceAlongSpline(i*length,W)).GetSafeNormal());
+		SplineFinal->SetTangentAtSplinePoint(i, tangent, W, false);
+	}
+	SplineFinal->UpdateSpline();
 }

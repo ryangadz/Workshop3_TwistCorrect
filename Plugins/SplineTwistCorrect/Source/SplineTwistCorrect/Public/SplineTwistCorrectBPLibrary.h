@@ -92,8 +92,17 @@ class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
         const float RotFromUp = 0,
         const float OffsetDist = 100);
 
+    /** Input an offset spline to fix the tangents by comparing length of user made spline */
     UFUNCTION(BlueprintCallable, meta = (DisplayName = "Fix Tangents of Offset Spline", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
     static void FixTangents(
         const class USplineComponent *SplineUser,
         class USplineComponent *SplineOffset);
+        
+    /** Builds a final spline using a user spline and offset spline. Final spline should be heavily subdivided to avoid twisting */
+    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Build Corrected Spline", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+    static void BuildCorrectedSpline(
+        const class USplineComponent *SplineUser,
+        const class USplineComponent *SplineOffset, 
+        class USplineComponent *SplineFinal,
+        const float IdealLength=100);
 };
