@@ -97,6 +97,8 @@ class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
     static void FixTangents(
         const class USplineComponent *SplineUser,
         class USplineComponent *SplineOffset);
+
+        //ERIC CAN YOU SEE THIS?
         
     /** Builds a final spline using a user spline and offset spline. Final spline should be heavily subdivided to avoid twisting */
     UFUNCTION(BlueprintCallable, meta = (DisplayName = "Build Corrected Spline", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
