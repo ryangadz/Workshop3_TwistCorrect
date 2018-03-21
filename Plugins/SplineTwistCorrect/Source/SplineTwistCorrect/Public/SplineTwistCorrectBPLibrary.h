@@ -27,28 +27,15 @@
 *	https://wiki.unrealengine.com/Custom_Blueprint_Node_Creation
 */
 
-    //  USTRUCT(BlueprintType)
-    //  struct MyStruct {
-    //  GENERATED_USTRUCT_BODY()
-    //      MyStruct(float l = 0f, int n = 0) : length(l), num(n) {}
-     
-    //      UPROPERTY(BlueprintReadWrite, Category = Vars)
-    //          float length;
-    //      UPROPERTY(BlueprintReadWrite, Category = Vars)
-    //          int num;
-    //  };
+
 
 UCLASS()
 class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Execute Sample function", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
-	static float SplineTwistCorrectSampleFunction(float Param);
-
-
     /** Input a spline and ideal subdivision length to get number of subdivisions and calculated length. */
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Calculate Rail Length", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Calculate Rail Length", Keywords = "SplineTwistCorrect TwistCorrect SplineCorrect"), Category = "SplineTwistCorrect")
 	static void CalcRailLength(
         const class USplineComponent* Spline, 
         int &number, 
@@ -56,7 +43,7 @@ class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
         const float IdealLength=10);
 
     /** Input a spline with index and section length to calculate start and end locations and tangents for a spline mesh */
-    UFUNCTION(BlueprintPure, meta = (DisplayName = "Calculate Start End", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "Calculate Start End", Keywords = "SplineTwistCorrect TwistCorrect SplineCorrect"), Category = "SplineTwistCorrect")
     static void CalcStartEnd(
         const class USplineComponent* Spline, 
         FVector& LocStart, 
@@ -67,7 +54,7 @@ class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
         const float Length=10);
 	
     /** Input a spline to calculate the rotation of a spline mesh from the current 'Up Vector' to its end location. */
-    UFUNCTION(BlueprintPure, meta = (DisplayName = "Calc Rot from Up Vector", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "Calc Rot from Up Vector", Keywords = "SplineTwistCorrect TwistCorrect SplineCorrect"), Category = "SplineTwistCorrect")
     static void CalcRotFromUp(
         float &Rotation, 
         const class USplineComponent* Spline, 
@@ -75,7 +62,7 @@ class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
         const float Length=10);
 
     /** Input a spline and splinemesh to set its start and end along with twisting */
-    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Configure SplineMesh", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Configure SplineMesh", Keywords = "SplineTwistCorrect TwistCorrect SplineCorrect"), Category = "SplineTwistCorrect")
     static void ConfigSplineMesh(
         const int &Index, 
         const float &Length, 
@@ -85,23 +72,23 @@ class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
         class UStaticMesh *StaticMesh);
 
     /** Input a Spline to offset with offset distance and rotation from the spline's up vector at each point */
-    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Offset a Spline", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
-    static void OffsetASpline(
+    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Build Offset Spline", Keywords = "SplineTwistCorrect TwistCorrect SplineCorrect"), Category = "SplineTwistCorrect")
+    static void BuildOffsetSpline(
         const class USplineComponent *SplineUser,
         class USplineComponent *SplineOffset,
         const float RotFromUp = 0,
         const float OffsetDist = 100);
 
     /** Input an offset spline to fix the tangents by comparing length of user made spline */
-    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Fix Tangents of Offset Spline", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Fix Tangents of Offset Spline", Keywords = "SplineTwistCorrect TwistCorrect SplineCorrect"), Category = "SplineTwistCorrect")
     static void FixTangents(
         const class USplineComponent *SplineUser,
         class USplineComponent *SplineOffset);
 
-        //ERIC CAN YOU SEE THIS?
+        
         
     /** Builds a final spline using a user spline and offset spline. Final spline should be heavily subdivided to avoid twisting */
-    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Build Corrected Spline", Keywords = "SplineTwistCorrect sample test testing"), Category = "SplineTwistCorrectTesting")
+    UFUNCTION(BlueprintCallable, meta = (DisplayName = "Build Corrected Spline", Keywords = "SplineTwistCorrect TwistCorrect SplineCorrect"), Category = "SplineTwistCorrect")
     static void BuildCorrectedSpline(
         const class USplineComponent *SplineUser,
         const class USplineComponent *SplineOffset, 

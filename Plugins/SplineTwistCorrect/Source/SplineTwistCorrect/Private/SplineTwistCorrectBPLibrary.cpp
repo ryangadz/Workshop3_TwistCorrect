@@ -99,7 +99,7 @@ void USplineTwistCorrectBPLibrary::ConfigSplineMesh(
 	SplineMesh->SetStaticMesh(StaticMesh);
 }
 
-void USplineTwistCorrectBPLibrary::OffsetASpline(
+void USplineTwistCorrectBPLibrary::BuildOffsetSpline(
 	const class USplineComponent *SplineUser,
 	class USplineComponent *SplineOffset,
 	const float RotFromUp,
