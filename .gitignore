@@ -10,3 +10,6 @@ DerivedDataCache/*
 Plugins/SplineTwistCorrect/Binaries/*
 Plugins/SplineTwistCorrect/Intermediate/*
 Content/Beta/
+Workshop3.sln
+.vs/*
+
