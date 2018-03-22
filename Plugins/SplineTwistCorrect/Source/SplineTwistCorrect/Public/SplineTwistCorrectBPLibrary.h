@@ -35,7 +35,7 @@ class USplineTwistCorrectBPLibrary : public UBlueprintFunctionLibrary
 	GENERATED_UCLASS_BODY()
 
     /** Input a spline and ideal subdivision length to get number of subdivisions and calculated length. */
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Calculate Rail Length", Keywords = "SplineTwistCorrect TwistCorrect SplineCorrect"), Category = "SplineTwistCorrect")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Calculate Spline Sub Length", Keywords = "SplineTwistCorrect TwistCorrect SplineCorrect"), Category = "SplineTwistCorrect")
 	static void CalcRailLength(
         const class USplineComponent* Spline, 
         int &number, 
