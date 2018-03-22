@@ -10,11 +10,6 @@ USplineTwistCorrectBPLibrary::USplineTwistCorrectBPLibrary(const FObjectInitiali
 
 }
 
-float USplineTwistCorrectBPLibrary::SplineTwistCorrectSampleFunction(float Param)
-{
-	return -1;
-}
-
 void USplineTwistCorrectBPLibrary::CalcRailLength(
 	const class USplineComponent *Spline,
 	int &number,
