@@ -1,7 +1,7 @@
 # REQUIRES TWIST CORRECT PLUGIN ON MARKETPLACE
 This is a sample project to go with the twist correct plugin on the UE4 marketplace
-![alt text](https://github.com/ryangadz/Workshop3_TwistCorrect/blob/master/2018-03-02.png)
 
+![2018-03-02](/assets/2018-03-02_61whxuvo3.png)
 
 ![alt text](https://github.com/ryangadz/Workshop3_TwistCorrect/blob/master/TwistCorrect.png)
 
