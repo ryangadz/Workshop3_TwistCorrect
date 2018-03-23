@@ -1,16 +1,35 @@
 # REQUIRES TWIST CORRECT PLUGIN ON MARKETPLACE
+##(available soon)
 This is a sample project to go with the twist correct plugin on the UE4 marketplace
 
-![2018-03-02](/assets/2018-03-02_61whxuvo3.png)
+##Use cases:
+1. When adding spline mesh components to a spline that does loops or twists
+2. Finding an offset spline for geometry or effects
+3. Want to simplify setting up a spline mesh
+4. Want to subdivide a spline with minimal control points
 
 ![TwistCorrect](/assets/TwistCorrect_r1venq50n.png)
 
-# TODO
-- add LOTS of comments 
-- clean things up a bit
-- add VR to the train (I will not be doing this so if anyone does it I'll roll it in)
-- convert to C++
-- convert to plugin
+
+##How To use:
+1. Set up a spline in the editor (SplineUser) 
+2. Add a second spline to the actor and set it as a variable (SplineOffset)
+    - Its a good time use "Build Offset Spline" which will set the                  locationd and tangents of all the points on SplineOffset
+3. Add a third spline to the actor and set it as a variable (SplineFinal)
+    - We can "Build Corrected Spline" now which will subdivide the SplineUser and   set all the points of SplineFinal with 'Up Vectors' pointing toward the OffsetSpline
+4. We need the number of sections and calculated length from "Calculate Rail Length" to configure our final spline mesh. 
+5. Loop through adding spline meshes to the actor and "Configure SplineMesh" to see all of their locations, tangents, and rotations automatically.  
+
+![TwistCorrectScreenshotsFinal](/assets/TwistCorrectScreenshotsFinal.jpg)
+
+##Demo Room 
+Shows a progression using more and more functions in the plugin
+
+![TwistCorrectDemoRoom](/assets/TwistCorrectDemoRoom.png)
+
+#Available Functions
+Currently 7 functions that can all be used in Blueprints or C++
+![TwistCorrectScreenshots](/assets/TwistCorrectScreenshots.jpg)
 
 I will be going over this project at our monthly UE4 meetup
 https://www.meetup.com/Seattle-Indie-Game-Dev-Workshop/events/247613617/
