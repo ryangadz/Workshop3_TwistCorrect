@@ -6,6 +6,7 @@ Intermediate/*
 Saved/*
 Build/*
 DerivedDataCache/*
+Plugins/*
 
 Plugins/SplineTwistCorrect/Binaries/*
 Plugins/SplineTwistCorrect/Intermediate/*
