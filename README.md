@@ -2,6 +2,9 @@
 ## https://www.unrealengine.com/marketplace/spline-twist-correct
 This is a sample project to go with the twist correct plugin on the UE4 marketplace
 
+## Get live help on Discord: https://discord.gg/WDZk9MT
+
+
 ## Use cases:
 1. When adding spline mesh components to a spline that does loops or twists
 2. Finding an offset spline for geometry or effects
