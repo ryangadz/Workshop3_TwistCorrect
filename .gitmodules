@@ -1,0 +1,3 @@
+[submodule "Plugins/SplineTwistCorrect"]
+	path = Plugins/SplineTwistCorrect
+	url = https://github.com/ryangadz/SplineTwistCorrect.git
