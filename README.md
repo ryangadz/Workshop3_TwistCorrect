@@ -13,8 +13,15 @@ This is a sample project to go with the twist correct plugin on the UE4 marketpl
 
 ![TwistCorrect](/assets/TwistCorrect_r1venq50n.png)
 
+## How To use with 'Spline With Mesh' component: (NEW!!)
+1. Add the component to any actor 
+2. Adjust the parameters for the mesh and materials to use
+3. That is all!!
 
-## How To use:
+![SplineWithMeshComponentExamples](/assets/SplineWithMeshComponentExamples.jpg)
+
+
+## How To use with functions:
 1. Set up a spline in the editor (SplineUser) 
 2. Add a second spline to the actor and set it as a variable (SplineOffset)
     - Its a good time use "Build Offset Spline" which will set the                  locationd and tangents of all the points on SplineOffset
