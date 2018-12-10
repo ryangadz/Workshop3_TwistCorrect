@@ -7,7 +7,7 @@ Saved/*
 Build/*
 DerivedDataCache/*
 Plugins/*
-HoudiniEngine/*
+Content/HoudiniEngine/*
 
 Plugins/SplineTwistCorrect/Binaries/*
 Plugins/SplineTwistCorrect/Intermediate/*
