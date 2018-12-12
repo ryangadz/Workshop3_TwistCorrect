@@ -1,6 +1,6 @@
 # REQUIRES TWIST CORRECT PLUGIN ON MARKETPLACE
 ## https://www.unrealengine.com/marketplace/spline-twist-correct
-This is a sample project to go with the twist correct plugin on the UE4 marketplace
+This is a sample project in UE4.21 to go with the twist correct plugin on the UE4 marketplace
 
 ## Get live help on Discord: https://discord.gg/WDZk9MT
 
