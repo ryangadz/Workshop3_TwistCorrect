@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.21",
+	"EngineAssociation": "4.22",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -15,10 +15,7 @@
 			"Name": "SplineTwistCorrect",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/3ab1bb3146c34d4098fd2e564f6bd62c"
-		},
-		{
-			"Name": "HoudiniEngine",
-			"Enabled": false
 		}
+
 	]
 }
